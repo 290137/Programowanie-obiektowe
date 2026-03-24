@@ -122,7 +122,7 @@ int wyswietlListe(string* imiona, string* nazwiska, string* indeksy, bool* obecn
     int licznik = 0;
     for (int i = 0; i < N; i++) {
         if (nazwiska[i] != "") {
-            cout << "\n" << i + 1 << ". " << indeksy[i] << " \t " << imiona[i] << " \t " << nazwiska[i] << " \t " << (obecnosc[i] ? "TAK" : "NIE");
+            cout << "\n" << i + 1 << ". " << indeksy[i] << " " << imiona[i] << " " << nazwiska[i] << " " << (obecnosc[i] ? "TAK" : "NIE");
             licznik++;
         }
     }
