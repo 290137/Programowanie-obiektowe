@@ -118,8 +118,7 @@ void usunOsobe(string* imiona, string* nazwiska, string* indeksy, bool* obecnosc
 }
 
 int wyswietlListe(string* imiona, string* nazwiska, string* indeksy, bool* obecnosc) {
-    cout << "\n================ LISTA ================";
-    cout << "\nLp. Indeks \t Imie \t Nazwisko \t Obecny";
+    cout << "\n================================";
     int licznik = 0;
     for (int i = 0; i < N; i++) {
         if (nazwiska[i] != "") {
