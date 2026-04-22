@@ -93,7 +93,7 @@ class lista {
                     return;
                 }
             }
-            cout << "Nie znaleziono osoby o takim nazwisku na tej liscie." << endl;
+            cout << "Nie znaleziono osoby." << endl;
         }
     
         void ustawObecnosc(string nazwisko, bool obecnosc) {
@@ -104,7 +104,7 @@ class lista {
                     return;
                 }
             }
-            cout << "Nie znaleziono osoby o takim nazwisku na tej liscie." << endl;
+            cout << "Nie znaleziono osoby." << endl;
         }
 }; 
 
@@ -135,7 +135,7 @@ class interfejsUzytkownika {
                     return;
                 }
             }
-            cout << "Brak miejsca na nowe listy w bazie." << endl;
+            cout << "Brak miejsca w bazie." << endl;
         } 
 
         void edytujOsobe(int indeks) {
@@ -232,15 +232,15 @@ class interfejsUzytkownika {
                             wybrana_lista = t_lp;
                             cout << "Zmieniono liste na nr " << wybrana_lista << "." << endl;
                         } else {
-                            cout << "Tablica nr " << t_lp << " jeszcze nie istnieje. Najpierw ja utworz (opcja 2)." << endl;
+                            cout << "Tablica nie istnieje." << endl;
                         }
                     } else {
-                        cout << "Nieprawidlowy wybor. Dopuszczalne listy to 0 lub 1." << endl;
+                        cout << "Nieprawidlowy wybor." << endl;
                     }
                     break;
                 case 4:
                     if (tablicaList[wybrana_lista] == nullptr) {
-                        cout << "Wybrana lista nie istnieje! Utworz ja (opcja 2)." << endl;
+                        cout << "Lista nie istnieje." << endl;
                     } else {
                         cout << "Podaj nazwisko osoby do dodania: ";
                         cin >> t_nazwisko;
@@ -250,17 +250,17 @@ class interfejsUzytkownika {
                         if (znalezionaOsoba != nullptr) {
                             tablicaList[wybrana_lista]->dodajDoListy(znalezionaOsoba);
                         } else {
-                            cout << "Nie znaleziono osoby w bazie! Najpierw dodaj ja do bazy (opcja 1)." << endl;
+                            cout << "Nie znaleziono osoby w bazie.." << endl;
                         }
                     }
                     break;
                 case 5:
                     if (tablicaList[wybrana_lista] == nullptr) {
-                        cout << "Wybrana lista nie istnieje! Utworz ja (opcja 2)." << endl;
+                        cout << "Lista nie istnieje." << endl;
                     } else {
                         cout << "Podaj nazwisko: ";
                         cin >> t_nazwisko;
-                        cout << "Podaj obecnosc (0 - NIE / 1 - TAK): ";
+                        cout << "Podaj obecnosc (0 / 1): ";
                         cin >> t_bool;
                         cout << endl;
                         tablicaList[wybrana_lista]->ustawObecnosc(t_nazwisko, t_bool);
@@ -268,7 +268,7 @@ class interfejsUzytkownika {
                     break;
                 case 6:
                     if (tablicaList[wybrana_lista] == nullptr) {
-                        cout << "Wybrana lista nie istnieje! Utworz ja (opcja 2)." << endl;
+                        cout << "Lista nie istnieje." << endl;
                     } else {
                         cout << "Podaj nazwisko: ";
                         cin >> t_nazwisko;
@@ -284,7 +284,7 @@ class interfejsUzytkownika {
                     break;
                 case 8:
                     if (tablicaList[wybrana_lista] == nullptr) {
-                        cout << "Wybrana lista nie istnieje! Utworz ja (opcja 2)." << endl;
+                        cout << "Lista nie istnieje." << endl;
                     } else {
                         tablicaList[wybrana_lista]->wyswietlListe();
                     }
