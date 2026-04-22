@@ -45,7 +45,7 @@ void dodajOsobe(osoba** tabOsoby, string imie, string nazwisko, int indeks);
 void ustawObecnosc(osoba** tabOsoby, bool* obecnosc, string nazwisko, bool stan);
 void edytujOsobe(osoba** tabOsoby, int indeks);
 void usunOsobe(osoba** tabOsoby, bool* obecnosci, int indeks);
-int wyswietlListe(osoba** tabOsoby, bool* obecnosc);
+void wyswietlListe(osoba** tabOsoby, bool* obecnosc);
 
 int main(void) {
     osoba *tabOsoby[N];
@@ -138,15 +138,14 @@ void dodajOsobe(osoba** tabOsoby, string imie, string nazwisko, int indeks) {
 }
 
 void ustawObecnosc(osoba** tabOsoby, bool* obecnosc, string nazwisko, bool stan) {
-    bool znaleziono = false;
     for (int i = 0; i < N; i++) {
         if (tabOsoby[i]->getNazwisko() == nazwisko) {
             obecnosc[i] = stan;
-            znaleziono = true;
+            cout << "\nZaktualizowano obecnosc.";
+            return;
         }
     }
-    if (znaleziono) cout << "\nZaktualizowano obecnosc.";
-    else cout << "\nNie znaleziono osoby o takim nazwisku.";
+    cout << "\nNie znaleziono osoby o takim nazwisku.";
 }
 
 void edytujOsobe(osoba** tabOsoby, int indeks) {
@@ -180,15 +179,14 @@ void usunOsobe(osoba** tabOsoby, bool* obecnosci, int indeks) {
     cout << "\nNie znaleziono osoby o takim indeksie.";
 }
 
-int wyswietlListe(osoba** tabOsoby, bool* obecnosc) {
+void wyswietlListe(osoba** tabOsoby, bool* obecnosc) {
     cout << "\n====================";
-    int licznik = 0;
     for (int i = 0; i < N; i++) {
         if (tabOsoby[i]->getNazwisko() != "") {
             cout << "\n" << i + 1 << ". " << tabOsoby[i]->getIndeks() << " " << tabOsoby[i]->getImie() << " " << tabOsoby[i]->getNazwisko() << " " << (obecnosc[i] ? "TAK" : "NIE");
-            licznik++;
+            return;
         }
     }
-    if (licznik == 0) cout << "\nLista jest pusta.";
-    return licznik;
+    cout << "\nLista jest pusta.";
+    return;
 }
