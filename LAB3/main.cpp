@@ -152,7 +152,7 @@ class interfejsUzytkownika {
                     return;
                 }
             }
-            cout << "Osoba o podanym indeksie nie istnieje." << endl;
+            cout << "Osoba nie istnieje." << endl;
         }
 
         void wyswietlOsobyWBazie() {
