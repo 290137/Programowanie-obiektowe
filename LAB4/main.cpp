@@ -105,7 +105,7 @@ class lista {
                     czyPusta = false;
                     cout << i + 1 << ". "; 
                     tabOsobyLista[i]->drukuj();
-                    cout << (tabObecnoscLista[i] ? "TAK" : "NIE") << endl;
+                    cout << " " <<(tabObecnoscLista[i] ? "TAK" : "NIE") << endl;
                 }
             } 
             if (czyPusta) {
