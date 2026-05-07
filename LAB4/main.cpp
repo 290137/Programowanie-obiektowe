@@ -32,7 +32,7 @@ class osoba {
             else nazwisko = "";
         }
 
-        virtual void drukuj() {
+        void drukuj() {
             cout << "OSOBA: " << getImie() << " " << getNazwisko();
         }
 
@@ -54,7 +54,7 @@ class student: public osoba {
             indeks = wartosc;
         }
 
-        virtual void drukuj(){
+        void drukuj(){
             cout << "STUDENT: " << getImie() << " " << getNazwisko() << " " << getIndeks();
         }
 
@@ -77,7 +77,7 @@ class stazysta: public osoba {
             id = wartosc;
         }
 
-        virtual void drukuj() {
+        void drukuj() {
             cout << "STAZYSTA: " << getImie() << " " << getNazwisko() << " " << getId();
         }
         stazysta(string tImie, string tNazwisko, int tId) : osoba(tImie, tNazwisko) {
