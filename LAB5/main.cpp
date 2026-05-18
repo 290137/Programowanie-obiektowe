@@ -4,7 +4,6 @@
 #define N 10
 using namespace std;
 
-//dodac interfejs do drukowania IDrukuj. zaimplementuj interfejs w osoba, student, stazysta. po stronie wykorzystania tego interfejsu funkcja drukuj ktora dostaje wskaznik na obiekt IDrukowalne, wykorzystac interfejs odwolujac sie do metody interfejsu. definicja interfejsu, implementacja, metoda abstrakcyjna
 
 class IDrukuj {
     public:
