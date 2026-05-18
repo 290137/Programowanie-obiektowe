@@ -87,7 +87,8 @@ int main(void) {
     tablicaOsob[0] = new osoba("Jan", "Kowalski");
     tablicaOsob[1] = new student("Janusz", "Nowak", 10002000);
     tablicaOsob[2] = new stazysta("Pawel", "Duda", 23);
-
+    //test
+    
     tablicaOsob[0]->drukuj();
     cout << endl;
     tablicaOsob[1]->drukuj();
