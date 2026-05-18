@@ -5,9 +5,20 @@
 using namespace std;
 
 //dodac interfejs do drukowania IDrukuj. zaimplementuj interfejs w osoba, student, stazysta. po stronie wykorzystania tego interfejsu funkcja drukuj ktora dostaje wskaznik na obiekt IDrukowalne, wykorzystac interfejs odwolujac sie do metody interfejsu. definicja interfejsu, implementacja, metoda abstrakcyjna
-//rozbuduj program o klase student zaoczny 
 
-class osoba {
+class IDrukuj {
+    public:
+        virtual void drukuj() = 0;
+        virtual ~IDrukuj() {}
+};
+
+void drukuj(IDrukuj* obiekt) {
+    if (obiekt != nullptr)
+        obiekt->drukuj();
+}
+
+
+class osoba : public IDrukuj {
     private:
         string imie;
         string nazwisko;
@@ -30,7 +41,7 @@ class osoba {
             else nazwisko = "";
         }
 
-        virtual void drukuj() {
+        void drukuj() override {
             cout << "OSOBA: " << getImie() << " " << getNazwisko();
         }
 
@@ -83,6 +94,29 @@ class stazysta: public osoba {
         }
 };
 
+class student_zaoczny: public osoba {
+    private:
+        int indeks;
+    public:
+        int getIndeks() {
+            return indeks;
+        }
+
+        void setIndeks(int wartosc) {
+            indeks = wartosc;
+        }
+
+        void drukuj() override {
+            cout << "STUDENT ZAOCZNY: " << getImie() << " " << getNazwisko() << " " << getIndeks();
+        }
+
+        student_zaoczny(string tImie, string tNazwisko, int tIndeks) : osoba(tImie, tNazwisko) {
+            setIndeks(tIndeks);
+        }
+
+        
+};
+
 class lista {
     private:
         osoba *tabOsobyLista[N];
@@ -102,7 +136,7 @@ class lista {
                 if (tabOsobyLista[i] != nullptr) {
                     czyPusta = false;
                     cout << i + 1 << ". "; 
-                    tabOsobyLista[i]->drukuj();
+                    drukuj(tabOsobyLista[i]); 
                     cout << " " <<(tabObecnoscLista[i] ? "TAK" : "NIE") << endl;
                 }
             } 
@@ -168,6 +202,10 @@ class interfejsUzytkownika {
                     case 2:
                         tablicaOsob[i] = new stazysta(imie, nazwisko, id);
                         break;
+                    case 3:
+                        tablicaOsob[i] = new student_zaoczny(imie, nazwisko, indeks);
+                        break;
+
                     default:
                         tablicaOsob[i] = new osoba(imie, nazwisko);
                     }
@@ -212,7 +250,7 @@ class interfejsUzytkownika {
             for (int i = 0; i < N; i++) {
                 if (tablicaOsob[i] != nullptr) {
                     cout << i + 1 << ". ";
-                    tablicaOsob[i]->drukuj(); 
+                    drukuj(tablicaOsob[i]);
                     cout << endl;
 
                 }
@@ -270,10 +308,9 @@ class interfejsUzytkownika {
                     cout << "Wprowadz nazwisko: ";
                     cin >> t_nazwisko;
 
-                    cout << "Wprowadz typ osoby (1 - Student 2 - Stazysta): ";
+                    cout << "Wprowadz typ osoby (1 - Student 2 - Stazysta 3 - Student zaoczny): ";
                     cin >> t_typ;
-
-                    if (t_typ == 1) {
+                    if (t_typ == 1 || t_typ == 3) {
                         cout << "Wprowadz indeks: ";
                         cin >> t_indeks;
                     } else if (t_typ == 2) 
